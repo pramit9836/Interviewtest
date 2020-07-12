@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2017 JCPenney Co. All rights reserved.
- */
+
 package com.test;
 
 import java.util.ArrayList;
