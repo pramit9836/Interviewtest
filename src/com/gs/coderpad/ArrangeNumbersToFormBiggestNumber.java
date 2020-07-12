@@ -23,6 +23,7 @@ public class ArrangeNumbersToFormBiggestNumber {
 
         String returnString = numberList.stream().reduce("",(x,y) -> x+y);
         //numberList.forEach(System.out::print);
+
         return returnString;
     }
 }

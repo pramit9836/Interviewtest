@@ -41,6 +41,11 @@ public class FirstNonRepeatingCharecter {
                 break;
             }
         }
+
+
+        /**
+         * Different task--shorting based on values of a map
+         */
         List<Map.Entry<Character, Integer> > list =
                 new LinkedList<Map.Entry<Character, Integer> >(frequencyMap.entrySet());
         list.sort(Comparator.comparing(Map.Entry::getKey));
