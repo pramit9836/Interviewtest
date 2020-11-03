@@ -2,6 +2,8 @@
 
 package com.test;
 
+import com.test.singleton.SingletonInstance;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -86,24 +88,7 @@ public class PayPal {
             System.out.println("Sleep over runable");
         };
         runable.run();
-        ArrayList<Movie> list = new ArrayList<Movie>();
-        list.add(new Movie("Force Awakens", 8, 2015));
-        list.add(new Movie("Star Wars", 7, 1977));
-        list.add(new Movie("Empire Strikes Back", 9, 1980));
-        list.add(new Movie("Return of the Jedi", 10, 1983));
 
-        Collections.sort(list, (m1, m2) -> {
-            if (m1.getYear() - m2.getYear() > 1) return 1;
-            if (m1.getYear() - m2.getYear() < 1) return -1;
-            else return 0;
-        });
-
-        Comparator<Movie> byName = Comparator.comparing(Movie::getName);
-        Collections.sort(list, byName);
-
-        System.out.println("Sort by name");
-
-        list.forEach(movie -> System.out.println(movie.getName()));
 
         GenericTest<Integer> gt = new GenericTest();
         System.out.println("Generic:"+gt.convertString(12));
@@ -119,14 +104,7 @@ public class PayPal {
 
         //System.out.println(future.get().toString());
 
-        SingletonInstance instance  = SingletonInstance.INSTANCE;
-        instance.setInstance(10);
-        System.out.println("Instance value:"+instance.getInstance());
-        instance.setInstance(15);
-        System.out.println("Instance value:"+instance.getInstance());
 
-        TestInstance ts = TestInstance.INSTANCE;
-        System.out.println("before seting var:"+ts.get());
 
     }
 }

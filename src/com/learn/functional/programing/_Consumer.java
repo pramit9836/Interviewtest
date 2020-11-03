@@ -12,9 +12,17 @@ import java.util.function.Consumer;
  * result.
  */
 
-public class _Consumer {
+public class _Consumer  implements DefaultTest, Default2{
 
     public static void main(String[] args) {
+
+        //DefaultTest.super.defaultPrint();
+        //DefaultTest.defaultPrint();
+
+        new _Consumer().defaultPrint();
+
+
+
 
         consumer.accept(new Person("Haana", "Montana"));
 
@@ -22,6 +30,12 @@ public class _Consumer {
 
 
 
+    }
+
+    @Override
+    public void defaultPrint() {
+        DefaultTest.super.defaultPrint();
+        Default2.super.defaultPrint();
     }
 
     static BiConsumer<Person, Boolean> biConsumer = (person, flag) -> {

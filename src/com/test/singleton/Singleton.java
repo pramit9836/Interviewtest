@@ -1,5 +1,5 @@
 
-package com.test;
+package com.test.singleton;
 /**
  * @author Pramit Karmakar
  * Created on 14/05/20

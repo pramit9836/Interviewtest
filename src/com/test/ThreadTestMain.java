@@ -1,17 +1,18 @@
 
 package com.test;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 /**
  * @author Pramit Karmakar
  * Created on 22/06/20
  */
 
-public class ThreadTestMain {
+public class ThreadTestMain extends ThreadPoolExecutor {
+
+    public ThreadTestMain(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue) {
+        super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);
+    }
 
     public static void main(String[] args) {
 
@@ -57,9 +58,15 @@ public class ThreadTestMain {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future f = executor.submit((Callable) () -> 1);
 
-        Runnable r = () -> {
+        executor.execute(() -> {
+            ThreadLocal<Integer> tl = new ThreadLocal<Integer>();
+            tl.set(10);
+            System.out.println("Runable: "+tl.get());
+        });
+        executor.shutdown();
 
-        };
+
     }
+
 
 }

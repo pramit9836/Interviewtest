@@ -84,9 +84,30 @@ public class FilterStreamLearning {
 
         System.out.println("Total age::"+totalAge);
 
-        List<Integer> flatlist = masterList.stream().flatMap(list -> list.stream()).collect(Collectors.toList());
+        List<Integer> flatlist = masterList.stream().flatMap(Collection::stream).collect(Collectors.toList());
         flatlist.forEach(System.out::print);
+        System.out.println();
 
+
+        HashMap<String, String > map = new HashMap<String, String>();
+        map.put("1","w");
+        map.put("2","g");
+        map.put("3","c");
+        map.put("5","z");
+        map.put("60","a");
+        map.put("4","d");
+
+        map.entrySet().forEach(System.out::println);
+        System.out.println();
+        map.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEach(System.out::println);
+        System.out.println();
+        map.entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach(System.out::println);
+
+        LinkedHashMap<String,String > sortedMap = map.entrySet().stream().sorted(Map.Entry.comparingByValue()).
+                collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (ov, nv) -> ov, LinkedHashMap::new));
+
+        System.out.println();
+        sortedMap.entrySet().forEach(System.out::println);
 
 
     }
