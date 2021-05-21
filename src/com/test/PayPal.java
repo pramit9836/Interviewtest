@@ -85,7 +85,8 @@ public class PayPal {
             }
             System.out.println("Sleep over runable");
         };
-        runable.run();
+        Thread tt = new Thread(runable);
+        tt.start();
         ArrayList<Movie> list = new ArrayList<Movie>();
         list.add(new Movie("Force Awakens", 8, 2015));
         list.add(new Movie("Star Wars", 7, 1977));
@@ -126,7 +127,8 @@ public class PayPal {
         System.out.println("Instance value:"+instance.getInstance());
 
         TestInstance ts = TestInstance.INSTANCE;
-        System.out.println("before seting var:"+ts.get());
+        ts.set(10);
+        System.out.println("before setting var:"+ts.get());
 
     }
 }

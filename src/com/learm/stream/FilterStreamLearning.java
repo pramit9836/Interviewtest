@@ -33,7 +33,7 @@ public class FilterStreamLearning {
 
         List<String> userReplacement = new ArrayList<>();
 
-        int ss = users.stream().map(user -> user.getAge()).collect(Collectors.toList()).stream().reduce(0, (a,b) -> (a+b));
+        int ss = users.stream().map(User::getAge).collect(Collectors.toList()).stream().reduce(0, Integer::sum);
 
         List<String> usersList1 = userNames.stream().filter(user -> user.startsWith("A")).map(user -> {
             String s = user.replaceAll("A","aa");
@@ -41,7 +41,7 @@ public class FilterStreamLearning {
         }).collect(Collectors.toList());
 
         System.out.println("new-------|");
-        usersList1.stream().forEach(user -> System.out.println("Username: " + user ));
+        usersList1.forEach(user -> System.out.println("Username: " + user ));
 
         List<User> usersList = userNames.stream().filter(user -> (user.startsWith("A") && (user.startsWith("Ay"))))
                 .map(User::new).collect(Collectors.toList());
@@ -77,15 +77,32 @@ public class FilterStreamLearning {
         masterList.add(integers2);
 
         Integer suum = integers.stream().mapToInt(Integer::valueOf).sum();
+        suum = integers.stream().reduce(0,Integer::sum);
         System.out.println(suum);
 
-        int total  = integers.parallelStream().reduce(0, (a,b) -> (a+b));
+        int total  = integers.parallelStream().reduce(0, Integer::sum);
         int totalAge = users.parallelStream().reduce(0, (partialAge ,user) -> partialAge + user.getAge(), Integer::sum);
 
         System.out.println("Total age::"+totalAge);
 
-        List<Integer> flatlist = masterList.stream().flatMap(list -> list.stream()).collect(Collectors.toList());
+        List<Integer> flatlist = masterList.stream().flatMap(Collection::stream).filter(a -> (a%2 == 0)).collect(Collectors.toList());
         flatlist.forEach(System.out::print);
+
+        Integer a = 101;
+        Integer aa = 100;
+        if (a.equals(aa)) {
+            System.out.println("true");
+        }
+        if (a == aa) {
+            System.out.println("true 2");
+        }
+
+        String input = "";
+        Map<String, Integer> lengthMap = Arrays.stream(input.split(" ")).collect(Collectors.toMap(value -> value, String::length));
+
+        List<Integer> number = new ArrayList<Integer>(Arrays.asList(10,11,47,50,34,99,21));
+
+        long sort = number.stream().filter(n -> n > 50).count();
 
 
 

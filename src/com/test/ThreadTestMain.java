@@ -52,6 +52,9 @@ public class ThreadTestMain {
             }
             System.out.println("Sleep over runable");
         };
+
+        Thread tt = new Thread(runable);
+        tt.start();
         runable.run();
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -60,6 +63,11 @@ public class ThreadTestMain {
         Runnable r = () -> {
 
         };
+
+        ExecutorService ex = Executors.newCachedThreadPool();
+        ex.submit(() -> {
+
+        });
     }
 
 }

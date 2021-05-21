@@ -15,7 +15,7 @@ public class Singleton {
         this.name = name;
     }
 
-    public static Singleton getInstance(String name) {
+    public static Singleton getInsFsitance(String name) {
         if (singleton == null) {
             return new Singleton(name);
         }
